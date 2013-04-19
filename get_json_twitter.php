@@ -12,14 +12,13 @@
 		<div>
 <?php
 
-
-
 	$username       = $_POST["username"];
-	$url            = 'https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='.$username.'&count=1';
-	$urlContent     = file_get_contents($url);
-	$jsonUrlContent = json_decode($urlContent, true);
-	
+
 	if ($username != '') {
+		$url            = 'https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='.$username.'&count=1';
+		$urlContent     = file_get_contents($url);
+		$jsonUrlContent = json_decode($urlContent, true);
+	
 		echo $url;
 		echo '<br /><br />';
 		echo '<br />- '.$jsonUrlContent[0]["created_at"];
@@ -29,6 +28,7 @@
 		echo '<br />- '.$jsonUrlContent[0]["source"];
 		echo '<br />- '.$jsonUrlContent[0]["user"]["name"];
 	}
+
 ?>
 		</div>
 	</body>
